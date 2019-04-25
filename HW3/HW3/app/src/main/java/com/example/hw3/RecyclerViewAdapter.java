@@ -22,30 +22,37 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
         }
     }
-    @Override
-    public void onBindViewHolder(ViewHolder holder, int position){
-
-        TextView movie_title = holder.layout.findViewById(R.id.movie_title);
-        TextView movie_year = holder.layout.findViewById(R.id.movie_year);
-        TextView movie_review = holder.layout.findViewById(R.id.movie_review);
-        movie_title.setText(SubjectValues[position][0]);
-        movie_year.setText(SubjectValues[position][1]);
-        movie_review.setText(SubjectValues[position][4]);
-    }
+    // constructor
     public RecyclerViewAdapter(String[][] subjects){
         SubjectValues = subjects;
     }
-
+    // Created new views (invoked by the layout manager)
     @Override
     public RecyclerViewAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType){
 
-
+        // create a new view
         LinearLayout v = (LinearLayout)LayoutInflater.from(parent.getContext()).inflate(R.layout.recyclerviewitems, parent, false);
-        ViewHolder holder = new ViewHolder(v);
-        return holder;
+        ViewHolder myHolder = new ViewHolder(v);
+        return myHolder;
 
     }
+    // Replace the contents of a view (invoked by the layout manager)
 
+    @Override
+    public void onBindViewHolder(ViewHolder myHolder, int position){
+        // - get element from dataset at this position
+        // - replace the contents of the view with that element
+        TextView movie_title = myHolder.layout.findViewById(R.id.movie_title);
+        TextView movie_year = myHolder.layout.findViewById(R.id.movie_year);
+        TextView movie_url = myHolder.layout.findViewById(R.id.movie_url);
+        TextView movie_review = myHolder.layout.findViewById(R.id.movie_review);
+        movie_title.setText(SubjectValues[position][0]);
+        movie_year.setText(SubjectValues[position][1]);
+        movie_url.setText(SubjectValues[position][3]);
+        movie_review.setText(SubjectValues[position][4]);
+        //movie_url.setText(SubjectValues[position][2]);
+
+    }
 
     @Override
     public int getItemCount(){

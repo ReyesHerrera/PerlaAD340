@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">HWFour</string>
+    <string name="main">Training Schedule</string>
+    <string name="second">Day One</string>
+    <string name="next">DAY ONE</string>
+
+    <string name="nav_open_drawer">Open Drawer</string>
+    <string name="nav_close_drawer">Close Drawer</string>
+
+    <string name="app_bar_share">share</string>
+    <string name="app_bar_settings">settings</string>
+
+    <string name="nav_home">Home</string>
+    <string name="nav_day_one">today</string>
+    <string name="nav_help">help</string>
+
+    <string name="day_one">DAY ONE--Full Body</string>
+    <string name="day_two">DAY TWO--Abs</string>
+    <string name="day_three">DAY THREE--legs</string>
+
+
+</resources>

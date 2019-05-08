@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="@string/main"
+        android:textStyle="bold"
+        android:textSize="60dp"
+        />
+
+    <TextView
+        android:id="@+id/day_one"
+        android:layout_width="465dp"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:text="@string/day_one"
+        />
+    <TextView
+        android:id="@+id/day_two"
+        android:layout_width="465dp"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:text="@string/day_two"
+        />
+    <TextView
+        android:id="@+id/day_three"
+        android:layout_width="465dp"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:text="@string/day_three"
+        />
+
+    <Button
+        android:id="@+id/fragment_main_next"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/next"
+        />
+
+</LinearLayout>

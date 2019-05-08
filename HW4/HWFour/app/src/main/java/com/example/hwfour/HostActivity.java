@@ -1,5 +1,6 @@
 package com.example.hwfour;
 
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -88,6 +89,16 @@ public class HostActivity extends AppCompatActivity implements MainFragment.OnNe
                 return true;
 
             case R.id.action_share:
+                Intent sharingIntent = new Intent(Intent.ACTION_SEND);
+                sharingIntent.setType("text/plain");
+                String shareBody = "Content Here";
+                String shareSubject = "Subject here";
+
+                sharingIntent.putExtra(Intent.EXTRA_TEXT, shareBody);
+                sharingIntent.putExtra(Intent.EXTRA_SUBJECT, shareSubject);
+
+                startActivity(Intent.createChooser(sharingIntent, "Share Using"));
+
                 Log.i(TAG, "Share clicked");
                 Toast toast1 = Toast.makeText(this, "Share Clicked", Toast.LENGTH_SHORT);
                 toast1.show();

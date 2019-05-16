@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <EditText
+        android:id="@+id/editTextTemperature"
+        android:layout_width="177dp"
+        android:layout_height="100dp"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="168dp"
+        android:layout_marginEnd="112dp"
+        android:ems="10"
+        android:hint="Temperature to Convert"
+        android:inputType="numberDecimal"
+        android:text="Enter temperature" />
+
+
+    <RadioGroup
+        android:id="@+id/radioGroup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/editTextTemperature"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="-2dp"
+        android:layout_marginLeft="-2dp"
+        android:layout_marginTop="-207dp"
+        android:layout_marginEnd="2dp">
+
+        <RadioButton
+            android:id="@+id/radioButtonC2F"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Celcius to Farenheit" />
+
+        <RadioButton
+            android:id="@+id/radioButtonF2C"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Farenheit to Celsius" />
+    </RadioGroup>
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/radioGroup"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="66dp"
+        android:layout_marginTop="236dp"
+        android:layout_marginEnd="78dp"
+        android:layout_marginBottom="372dp"
+        android:onClick="convert"
+        android:text="Convert" />
+
+
+</RelativeLayout>

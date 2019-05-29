@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">HWSix</string>
+    <string name="waiting">waiting</string>
+    <string name="no_connection">Not Connected</string>
+
+
+</resources>

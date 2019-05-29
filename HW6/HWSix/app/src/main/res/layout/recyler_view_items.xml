@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="@dimen/margins"
+    card_view:cardBackgroundColor="@color/backGround"
+    android:scrollbars="vertical"
+    card_view:cardElevation="5dp"
+    card_view:cardCornerRadius="20dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="477dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/location_camera"
+            android:layout_width="327dp"
+            android:layout_height="53dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="20dp"
+            android:layout_marginLeft="@dimen/margins"
+            android:layout_marginTop="@dimen/margins"
+            android:layout_marginEnd="24dp"
+            android:layout_marginRight="@dimen/margins"
+            android:layout_marginBottom="@dimen/margins"
+            android:textAlignment="center"
+            android:textColor="@color/tangerineColor"
+            android:textSize="@dimen/size"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:id="@+id/camera_image"
+            android:layout_width="275dp"
+            android:layout_height="331dp"
+            android:layout_alignBottom="@+id/location_camera"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="48dp"
+            android:layout_marginEnd="48dp"
+            android:layout_marginBottom="-356dp"
+            android:cropToPadding="false" />
+
+    </RelativeLayout>
+
+</android.support.v7.widget.CardView>

@@ -10,6 +10,7 @@ proguard-rules.pro
 idea/
 .idea/
 
+
 # These are configured to apply to each/all HW folders
 
 /*/local.properties
@@ -17,3 +18,5 @@ idea/
 /*/build
 /*/*/build
 /*/captures
+#API 
+google_maps_api_key.xml

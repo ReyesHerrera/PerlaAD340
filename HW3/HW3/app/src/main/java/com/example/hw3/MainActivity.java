@@ -1,24 +1,16 @@
 package com.example.hw3;
 
+
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.content.Intent;
+import android.widget.Button;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
+    private Button btn;
 
-//    Context context;
-//    RecyclerView recyclerView;
-//    RelativeLayout relativeLayout;
-//    RecyclerView.Adapter recyclerViewAdapter;
-//    RecyclerView.LayoutManager recylerViewLayoutManager;
-//    String[] subjects =
-//            {
-//                    "Movie 1",
-//                    "Movie 2",
-//                    "Movie 3",
-//                    "Movie 4",
-//                    "Movie 4"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,8 +21,9 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this,SecondActivity.class);
         startActivity(intent);
     }
-    public void onClick(View button){
-        Intent intent = new Intent(this,SecondActivity.class);
-        startActivity(intent);
+    public void onClick(View view){
+        Button btn = findViewById(R.id.empty_btn_again_again);
+        Toast toast = Toast.makeText(this, "Empty", Toast.LENGTH_SHORT);
+        toast.show();
     }
 }

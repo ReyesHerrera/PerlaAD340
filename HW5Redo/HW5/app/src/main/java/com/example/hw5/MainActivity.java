@@ -24,12 +24,12 @@ public class MainActivity extends AppCompatActivity {
     //onClick for Button
     public void convert(View v){
         //double value temp
-        double value = new Double(temp.getText().toString());
+        double value =  Double.valueOf(temp.getText().toString());
         if(toC.isChecked())
             value = Temperature.fahrenheitToCelsius(value);
         else
             value = Temperature.celsiusToFahrenheit(value);
-        temp.setText(new Double(value).toString());
+        temp.setText(Double.toString(value));
 
     }
 

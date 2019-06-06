@@ -9,6 +9,7 @@ import androidx.test.filters.LargeTest;
 import androidx.test.rule.ActivityTestRule;
 import androidx.test.runner.AndroidJUnit4;
 
+import static androidx.test.espresso.action.ViewActions.closeSoftKeyboard;
 import static androidx.test.espresso.matcher.ViewMatchers.isChecked;
 import static androidx.test.espresso.matcher.ViewMatchers.isNotChecked;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
@@ -40,14 +41,20 @@ public class TemperatureUITest {
     public void converter() {
         //testView input
         onView(withId(R.id.editTextTemperature))
-                .perform(typeText("32"));
-
+                .perform(typeText("32"), closeSoftKeyboard());
+        //clicking radio buttons
         onView(withId(R.id.radioButtonC2F))
                 .perform(click());
-        onView(withId(R.id.radioButtonC2F))
-                .check(matches(isNotChecked()));
-
         onView(withId(R.id.radioButtonF2C))
-                .check(matches(isNotChecked()));
+                .perform(click());
+        onView(withId(R.id.radioGroup))
+                .check(matches(isDisplayed()));
+
+        onView(withId(R.id.button))
+                .perform(click());
+
+
+
+
     }
 }

@@ -10,6 +10,7 @@ import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.content.ContextCompat;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.widget.Toast;
 import static android.widget.Toast.makeText;
@@ -83,7 +84,7 @@ public class MapLocation extends FragmentActivity implements OnMapReadyCallback 
             LatLng coordinates = new LatLng(latitude, longitude);
 
             //Marker newMarker =
-                    mMap.addMarker(
+            mMap.addMarker(
                     new MarkerOptions().position(coordinates).title(cameraMeta[0]));
         }
 
@@ -148,8 +149,8 @@ public class MapLocation extends FragmentActivity implements OnMapReadyCallback 
 
     @Override
     public void onRequestPermissionsResult(int requestCode,
-        @NonNull String permissions[],
-        @NonNull int[] grantResults) {
+                                           @NonNull String permissions[],
+                                           @NonNull int[] grantResults) {
 
         mLocationPermissionGranted = false;
 
@@ -157,9 +158,9 @@ public class MapLocation extends FragmentActivity implements OnMapReadyCallback 
 
             case 1 : {
                 if (grantResults.length > 0
-                            && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                        mLocationPermissionGranted = true;
-                        getLocation();
+                        && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    mLocationPermissionGranted = true;
+                    getLocation();
                 }
             }
         }

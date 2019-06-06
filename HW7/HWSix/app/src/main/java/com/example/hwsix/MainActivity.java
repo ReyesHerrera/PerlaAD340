@@ -13,6 +13,8 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import org.json.JSONArray;
@@ -23,14 +25,17 @@ import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.maps.GoogleMap;
 
+import java.util.ArrayList;
+
 public class MainActivity extends AppCompatActivity
         implements LoaderManager.LoaderCallbacks<String> {
 
     //private TextView results;
     private final static String TAG = "Main Activity";
     private RecyclerViewAdapter adapter;
+    static TextView textLocation;
     static Context context;
-    private TraficCamera[] traficCamera;
+    private ArrayList<TraficCamera>cams;
 
 
     //for google
@@ -54,7 +59,14 @@ public class MainActivity extends AppCompatActivity
         //SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
         //        .findFragmentById(R.id.map);
         //mapFragment.getMapAsync((OnMapReadyCallback) this);
-
+        /*textLocation = (TextView)findViewById(R.id.text_location);
+        Button button = findViewById(R.id.btn_data_get);
+        button.setOnClickListener(this);*/
+        this.cams = new ArrayList<>();
+        mFusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
+        SupportMapFragment mapFragment
+                = (SupportMapFragment) getSupportFragmentManager()
+                .findFragmentById(R.id.map);
         if (info !=null && info.isConnected()){
 
             //results.setText(getResources().getString(R.string.waiting));
@@ -84,11 +96,7 @@ public class MainActivity extends AppCompatActivity
         return new  LocAsyncTaskLoader(this, queryString);
 
     }
-    /**
-     * Called when a view has been clicked.
-     *
-     * @param v The view that was clicked.
-     */
+/*
     @Override
     public void onClick(View v) {
         ConnectivityManager connectivityManager
@@ -108,7 +116,7 @@ public class MainActivity extends AppCompatActivity
         bundle.putString("queryString", "Fauntleroy_SW_Cloverdale_NS.jpg");
         getSupportLoaderManager().restartLoader(0, bundle, this);
 
-    }
+    }*/
     @Override
     public void onLoadFinished(@NonNull Loader<String> loader, String s) {
 
@@ -121,13 +129,13 @@ public class MainActivity extends AppCompatActivity
             JSONObject rootObject= new JSONObject(s);
             JSONArray features = rootObject.getJSONArray("Features");
             //List of the Objects
-            TraficCamera[] cameras = new TraficCamera[features.length()];
+            //TraficCamera[] cameras = new TraficCamera[features.length()];
 
             for ( int i = 0; i<features.length(); i++) {
                 JSONObject currentImage = features.getJSONObject(i);
                 JSONArray coordinates = currentImage.getJSONArray("PointCoordinate");
                 double latitude = coordinates.getDouble(0);
-                double longtitude = coordinates.getDouble(1);
+                double longitude = coordinates.getDouble(1);
 
                 JSONArray cams = currentImage.getJSONArray("Cameras");
                 JSONObject firstCamera = cams.getJSONObject(0);
@@ -137,8 +145,8 @@ public class MainActivity extends AppCompatActivity
                 url = firstCamera.getString("ImageUrl");
                 type = firstCamera.getString("Type");
 
-                TraficCamera traficCamera = new TraficCamera(latitude, longtitude,id, description, url, type);
-                cameras[i] = traficCamera;
+                TraficCamera traficCamera = new TraficCamera(latitude, longitude,id, description, url, type);
+                this.cams.add(traficCamera);
             }
 
             RecyclerView recyclerView = findViewById(R.id.recycler_view_adapter);
@@ -146,24 +154,33 @@ public class MainActivity extends AppCompatActivity
 
             LinearLayoutManager a_manager = new LinearLayoutManager(this);
             recyclerView.setLayoutManager(a_manager);
-            adapter = new RecyclerViewAdapter(cameras);
-            recyclerView.setAdapter(adapter);
+            //array is not empty anymore
+            //what do you
+            //pass to adapter
+            //
+            //click listener get reference to main activity.this.cams
+            
+            TraficCamera[] c = new TraficCamera[cams.size()];
+            cams.toArray(c);
 
-            adapter.setListener(new RecyclerViewAdapter(){
+            adapter = new RecyclerViewAdapter(c);
+
+            adapter.setListener(new RecyclerViewAdapter.Listener(){
                 @Override
                 public void onClick(int position) {
-                    Log.i(TAG, "Clicked " + traficCamera[position]);
+                    Log.i(TAG, "Clicked " + cams.get(position));
                     Intent intent = new Intent(getApplicationContext(),
                             MapLocation.class);
                     String[] cameraPackage = new String[4];
-                    cameraPackage[0] = traficCamera[position].getLocation();
-                    cameraPackage[1] = Double.toString(traficCamera[position].getLatitude());
-                    cameraPackage[2] = Double.toString(traficCamera[position].getLongtitude());
-                    cameraPackage[3] = traficCamera[position].getUrl();
+                    cameraPackage[0] = cams.get(position).getLocation();
+                    cameraPackage[1] = Double.toString(cams.get(position).getLatitude());
+                    cameraPackage[2] = Double.toString(cams.get(position).getLongitude());
+                    cameraPackage[3] = cams.get(position).getUrl();
                     intent.putExtra(CAM_INFO, cameraPackage);
                     startActivity(intent);
                 }
             });
+            recyclerView.setAdapter(adapter);
 
         }catch(Exception e){
             Log.e(TAG, e.getLocalizedMessage());    //in case something goes wrong

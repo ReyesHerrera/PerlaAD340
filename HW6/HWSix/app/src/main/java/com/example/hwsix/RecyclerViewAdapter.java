@@ -12,12 +12,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
 
-import static com.squareup.picasso.Picasso.*;
 
 //basic adapter extending from RecyclerView.Adapter
 //ViewHolder gives access to views
@@ -31,6 +29,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     private String WashingtonStateBaseUrl = " http://images.wsdot.wa.gov/nw/";
 
     private Listener listener;
+    private Context context;
 
     public void setListener(Listener listener){
         //metiche
@@ -113,4 +112,5 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
         return cams.length;
     }
+
 }

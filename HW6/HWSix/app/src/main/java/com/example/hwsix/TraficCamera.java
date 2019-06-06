@@ -2,18 +2,31 @@ package com.example.hwsix;
 
 //convert your data from JSON to instances of a custom Java class
 
+import android.widget.TextView;
+
+import static com.example.hwsix.MainActivity.context;
+
 public class TraficCamera {
 
+    //changes for map
+    private double latitude;
+    private double longitude;
     private String id;
     private String url;
     private String location;
     private String type;
+    private String description;
 
-    public TraficCamera (String id, String description, String url, String type) {
+    public TraficCamera (double latitude, double longtitude,
+                         String id, String description, String url, String type) {
         this.id = id;
         this.type = type;
         this.location = description;
+        this.description = description;
         setUrl(url);
+        //map
+        this.latitude=latitude;
+        this.longitude=longitude;
     }
 
     private void setUrl(String url) {
@@ -29,6 +42,26 @@ public class TraficCamera {
 
     }
 
+    //public void setLocation(String location) {
+    //    this.location = location;
+    //}
+
+    public double getLatitude() {
+        return latitude;
+    }
+
+    public double getLongitude() {
+        return longitude;
+    }
+
+    public void setLongitude(double longtitude) {
+        this.longitude = longtitude;
+    }
+
+    public void setLatitude(double latitude) {
+        this.latitude = latitude;
+    }
+
     public String getUrl() {
         return this.url;
     }
@@ -37,4 +70,8 @@ public class TraficCamera {
         return this.location;
     }
 
+
+    public String getDescription() {
+        return this.description;
+    }
 }

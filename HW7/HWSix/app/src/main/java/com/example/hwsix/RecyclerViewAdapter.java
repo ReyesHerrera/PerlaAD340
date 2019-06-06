@@ -75,7 +75,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     public RecyclerViewAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType){
 
         // create a new view
-        CardView v = (CardView) LayoutInflater.from(parent.getContext()).inflate(R.layout.recyler_view_items, parent, false);
+        CardView v = (CardView) LayoutInflater.from(parent.getContext()).inflate(R.layout.card_view, parent, false);
 
         return new ViewHolder(v);
 

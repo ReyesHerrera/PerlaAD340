@@ -17,7 +17,7 @@ public class NetworkConnection {
     public static String getData(String url){
         try{
             return getData((new URL(url)));
-        } catch(MalformedURLException ex){
+        } catch(MalformedURLException e){
 
         }
         return null;

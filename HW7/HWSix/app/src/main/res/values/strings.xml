@@ -3,6 +3,7 @@
     <string name="waiting">waiting</string>
     <string name="no_connection">Not Connected</string>
     <string name="location">location:: %1$f , %2$f</string>
+    <string name="click">Click</string>
 
 
 </resources>

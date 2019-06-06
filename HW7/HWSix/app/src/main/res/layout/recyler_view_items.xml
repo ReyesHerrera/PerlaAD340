@@ -33,6 +33,7 @@
 
         <ImageView
             android:id="@+id/camera_image"
+            android:contentDescription="@string/app_name"
             android:layout_width="275dp"
             android:layout_height="331dp"
             android:layout_alignBottom="@+id/location_camera"

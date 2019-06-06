@@ -107,7 +107,7 @@ public class MapLocation extends FragmentActivity implements OnMapReadyCallback 
                     1);
         }
     }
-    @SuppressLint("MissingPermission")
+    @SuppressLint("missingPermission")
     private void getLocation() {
         if (mLocationPermissionGranted){
             Task location = mFusedLocationProviderClient.getLastLocation();

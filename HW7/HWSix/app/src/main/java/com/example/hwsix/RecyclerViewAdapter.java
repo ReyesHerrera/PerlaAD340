@@ -16,20 +16,30 @@ import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
 
+import java.util.ArrayList;
+
 
 //basic adapter extending from RecyclerView.Adapter
 //ViewHolder gives access to views
 //from HW3 with modifications for HW6
+//passing an array list to this adapter
+
 public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder> implements LoaderManager.LoaderCallbacks<String> {
     //Dataset, BaseUrl for seattle.gov
     // different for each
     private TraficCamera[] cams;
+    ArrayList<ArrayList<ArrayList<TraficCamera>>> traficCameraArrayList = new ArrayList<ArrayList<ArrayList<TraficCamera>>>();
+
 
     private String SeattleGovBaseUrl = " http://www.seattle.gov/trafficcams/images/";
     private String WashingtonStateBaseUrl = " http://images.wsdot.wa.gov/nw/";
 
     private Listener listener;
     private Context context;
+
+   /* public void loadData(){
+        traficCameraArrayList.add(traficCameraArrayList);
+    }*/
 
     public void setListener(Listener listener){
         //metiche
